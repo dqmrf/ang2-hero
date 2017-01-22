@@ -1,3 +1,4 @@
+<h2>List of Heroes</h2>
 <ul class="heroes">
   <li *ngFor="let hero of heroes" 
     [class.selected]="hero === selectedHero" 
@@ -6,4 +7,9 @@
   </li>
 </ul>
 
-<hero-detail [hero]="selectedHero"></hero-detail>
+<div *ngIf="selectedHero">
+  <h2>
+    {{selectedHero.name | uppercase}} is my hero
+  </h2>
+  <button (click)="gotoDetail()">View details</button>
+</div>
