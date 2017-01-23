@@ -4,9 +4,9 @@ class PersonsController < ApplicationController
   
   def index
     qname = params[:name]
-    binding.pry
-    if !(qname.nil? && qname.empty?)
-      @persons = Person.where(name: qname)
+    # binding.pry
+    if qname && !(qname.nil? && qname.empty?)
+      @persons = Person.where("name LIKE ?", "%#{qname}%")
     else
       set_persons
     end
