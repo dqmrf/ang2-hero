@@ -8,7 +8,10 @@ import { AppComponent }        from './app.component';
 import { DashboardComponent }  from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero/hero-detail.component';
 import { HeroesComponent }     from './hero/heroes.component';
+import { HeroSearchComponent } from './hero/hero-search.component';
 import { HeroService }         from './hero/hero.service';
+
+import './rxjs-extensions';
 
 @NgModule({
   imports: [ 
@@ -21,7 +24,8 @@ import { HeroService }         from './hero/hero.service';
     AppComponent,
     DashboardComponent,
     HeroDetailComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroSearchComponent
   ],
   providers: [ HeroService ],
   bootstrap: [ AppComponent ]

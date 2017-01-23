@@ -1,8 +1,15 @@
 class PersonsController < ApplicationController
   before_action :set_person, only: [:show, :update, :create, :destroy]
-  before_action :set_persons, only: [:index]
+  # before_action :set_persons, only: [:index]
   
   def index
+    qname = params[:name]
+    binding.pry
+    if !(qname.nil? && qname.empty?)
+      @persons = Person.where(name: qname)
+    else
+      set_persons
+    end
     render json: @persons, status: :ok
   end
 
