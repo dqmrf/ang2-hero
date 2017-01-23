@@ -1,10 +1,8 @@
 class PersonsController < ApplicationController
   before_action :set_person, only: [:show, :update, :create, :destroy]
-  # before_action :set_persons, only: [:index]
   
   def index
     qname = params[:name]
-    # binding.pry
     if qname && !(qname.nil? && qname.empty?)
       @persons = Person.where("name LIKE ?", "%#{qname}%")
     else
