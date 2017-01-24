@@ -2,6 +2,7 @@ import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs'
 import { Hero }           from './hero';
+import { AppConfig }      from '../app.config'
 
 @Injectable()
 export class HeroSearchService {
@@ -9,7 +10,7 @@ export class HeroSearchService {
 
   search(term: string): Observable<Hero[]> {
     return this.http
-      .get(`http://localhost:3000/api/persons/?name=${term}`)
+      .get(`${AppConfig.API_ENDPOINT}/persons/?name=${term}`)
       .map((r: Response) => r.json() as Hero[]);
   }
 }
