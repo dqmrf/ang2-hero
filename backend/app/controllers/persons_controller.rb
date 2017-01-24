@@ -4,7 +4,7 @@ class PersonsController < ApplicationController
   def index
     qname = params[:name]
     if qname && !(qname.nil? && qname.empty?)
-      @persons = Person.where("name LIKE ?", "%#{qname}%")
+      @persons = current_user.persons.where("name LIKE ?", "%#{qname}%").order(created_at: :desc)
     else
       set_persons
     end
@@ -32,15 +32,11 @@ class PersonsController < ApplicationController
   private
 
     def set_person
-      if Person.exists?(params[:id])
-        @person = Person.find(params[:id])
+      if current_user.persons.exists?(params[:id])
+        @person = current_user.persons.find(params[:id])
       end
     end
-
-    def set_persons
-      @persons = Person.all
-    end
-
+    
     def person_params
       params.require(:person).permit(:name)
     end

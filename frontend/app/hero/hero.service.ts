@@ -1,5 +1,6 @@
 import { Http, Headers } from '@angular/http';
 import { Injectable }    from '@angular/core';
+import { AuthHttp }      from 'angular2-jwt/angular2-jwt';
 import { Hero }          from './hero'
 import { AppConfig }     from '../app.config'
 
